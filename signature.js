@@ -135,4 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
         link.download = "signature.png";
         link.click();
     });
+
+    themeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode");
+        themeLabel.textContent = document.body.classList.contains("dark-mode") ? "Dark Mode" : "Light Mode";
+    });
 });

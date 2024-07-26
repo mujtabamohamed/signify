@@ -6,6 +6,13 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #ffffff;
 }
 
 .container {
@@ -18,6 +25,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .container {
+    background-color: #000;
+    color: #ffffff;
 }
 
 .title {
@@ -27,12 +40,20 @@ body {
     margin-bottom: 20px;
 }
 
+body.dark-mode .title {
+    color: #ffffff;
+}
+
 #signatureCanvas {
-    border: 2px solid #007BFF;
+    border: 2px solid #007AFF;
     border-radius: 8px;
     touch-action: none; /* Disable double-tap zoom on mobile devices */
     width: 100%;
     height: 300px;
+}
+
+body.dark-mode #signatureCanvas {
+    border: 2px solid #007AFF;
 }
 
 .controls {
@@ -55,13 +76,17 @@ body {
     color: #333;
 }
 
+body.dark-mode .control label {
+    color: #ffffff;
+}
+
 .buttons {
     margin-top: 20px;
     text-align: center;
 }
 
 .buttons button {
-    background-color: #007BFF;
+    background-color: #007AFF;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -73,7 +98,16 @@ body {
 }
 
 .buttons button:hover {
-    background-color: #0056b3;
+    background-color: #006cdf;
+}
+
+body.dark-mode .buttons button {
+    background-color: #007AFF;
+    color: #fff;
+}
+
+body.dark-mode .buttons button:hover {
+    background-color: #006cdf;
 }
 
 @media (max-width: 600px) {
@@ -91,4 +125,67 @@ body {
         width: 100%;
         margin-bottom: 10px;
     }
+}
+
+.toggle-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007AFF;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+#themeLabel {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+body.dark-mode #themeLabel {
+    color: #ffffff;
 }
